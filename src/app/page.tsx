@@ -143,22 +143,21 @@ export default function Home() {
       <div className="orb w-[300px] h-[300px] bg-orange bottom-[20%] left-[20%]" style={{ animationDelay: "-13s" }} />
 
       {/* ═══ NAVBAR ═══ */}
-      <nav className="fixed top-0 left-0 right-0 z-50">
-        <div className="absolute inset-0 bg-black/70 backdrop-blur-xl border-b border-white/[0.06]" />
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-8 h-20 flex items-center justify-between">
-          <a href="#" className="font-pacifico text-[26px] text-white tracking-wide wordmark-sm" data-text="Nuevlo">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0D0D0D] pt-2" style={{ isolation: "isolate" }}>
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 h-20 flex items-center justify-between pb-2">
+          <span onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="font-pacifico text-[26px] text-white tracking-wide wordmark-sm cursor-pointer" data-text="Nuevlo">
             Nuevlo
-          </a>
+          </span>
           <div className="hidden md:flex items-center gap-10">
-            <a href="#how-it-works" className="text-white/60 hover:text-white transition-colors text-[13px] font-semibold tracking-wide uppercase">
+            <button onClick={() => document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" })} className="bg-transparent text-white/60 hover:text-white transition-colors text-[13px] font-semibold tracking-wide uppercase cursor-pointer p-0">
               {t.nav.howItWorks}
-            </a>
-            <a href="#waitlist" className="text-white/60 hover:text-white transition-colors text-[13px] font-semibold tracking-wide uppercase">
+            </button>
+            <button onClick={() => document.getElementById("waitlist")?.scrollIntoView({ behavior: "smooth" })} className="bg-transparent text-white/60 hover:text-white transition-colors text-[13px] font-semibold tracking-wide uppercase cursor-pointer p-0">
               {t.nav.forOrgs}
-            </a>
-            <a href="#waitlist" className="text-white/60 hover:text-white transition-colors text-[13px] font-semibold tracking-wide uppercase">
+            </button>
+            <button onClick={() => document.getElementById("waitlist")?.scrollIntoView({ behavior: "smooth" })} className="bg-transparent text-white/60 hover:text-white transition-colors text-[13px] font-semibold tracking-wide uppercase cursor-pointer p-0">
               {t.nav.joinWaitlist}
-            </a>
+            </button>
           </div>
           <button
             onClick={toggleLang}
@@ -219,7 +218,7 @@ export default function Home() {
       </section>
 
       {/* Divider */}
-      <div className="divider-gradient mx-auto max-w-5xl" />
+      {/* spacer */}
 
       {/* ═══ HOW IT WORKS ═══ */}
       <section id="how-it-works" className="py-28 px-6">
@@ -253,7 +252,7 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="divider-gradient mx-auto max-w-5xl" />
+      {/* spacer */}
 
       {/* ═══ AI LEGAL INTAKE ═══ */}
       <section id="intake" className="py-28 px-6">
@@ -319,7 +318,7 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="divider-gradient mx-auto max-w-5xl" />
+      {/* spacer */}
 
       {/* ═══ WAITLIST ═══ */}
       <section id="waitlist" className="py-28 px-6">
@@ -420,7 +419,7 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="divider-gradient mx-auto max-w-5xl" />
+      {/* spacer */}
 
       {/* ═══ PARTNERS ═══ */}
       <section id="partners" className="py-28 px-6">
@@ -451,7 +450,7 @@ export default function Home() {
       </section>
 
       {/* ═══ FOOTER ═══ */}
-      <footer className="border-t border-white/[0.06] py-16 px-6">
+      <footer className="py-16 px-6">
         <div className="max-w-5xl mx-auto text-center">
           <a href="#" className="font-pacifico text-xl text-white wordmark-sm" data-text="Nuevlo">Nuevlo</a>
           <p className="font-nunito text-white/30 mt-3 mb-8 text-sm font-light">{t.footer.tagline}</p>
