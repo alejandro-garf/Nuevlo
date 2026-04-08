@@ -143,9 +143,10 @@ export default function Home() {
       <div className="orb w-[300px] h-[300px] bg-orange bottom-[20%] left-[20%]" style={{ animationDelay: "-13s" }} />
 
       {/* ═══ NAVBAR ═══ */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-black/70 backdrop-blur-xl border-b border-white/[0.06]">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between">
-          <a href="#" className="font-pacifico text-[22px] text-white text-glow-orange tracking-wide">
+      <nav className="fixed top-0 left-0 right-0 z-50">
+        <div className="absolute inset-0 bg-black/70 backdrop-blur-xl border-b border-white/[0.06]" />
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-8 h-20 flex items-center justify-between">
+          <a href="#" className="font-pacifico text-[26px] text-white tracking-wide wordmark-sm" data-text="Nuevlo">
             Nuevlo
           </a>
           <div className="hidden md:flex items-center gap-10">
@@ -452,7 +453,7 @@ export default function Home() {
       {/* ═══ FOOTER ═══ */}
       <footer className="border-t border-white/[0.06] py-16 px-6">
         <div className="max-w-5xl mx-auto text-center">
-          <a href="#" className="font-pacifico text-lg text-white/80 text-glow-orange">Nuevlo</a>
+          <a href="#" className="font-pacifico text-xl text-white wordmark-sm" data-text="Nuevlo">Nuevlo</a>
           <p className="font-nunito text-white/30 mt-3 mb-8 text-sm font-light">{t.footer.tagline}</p>
           <div className="flex justify-center gap-8 mb-8">
             <a href="#" className="font-nunito text-white/30 hover:text-white/60 text-[12px] uppercase tracking-wider transition-colors">{t.footer.privacy}</a>

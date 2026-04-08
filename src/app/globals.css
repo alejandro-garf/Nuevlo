@@ -32,35 +32,74 @@ body::before {
   background-size: 800px 800px;
 }
 
-/* ─── Bubble Graffiti Wordmark ─── */
+/* ─── Bubble Graffiti Wordmark (hero) ─── */
 .wordmark {
   position: relative;
   display: inline-block;
   color: white;
   -webkit-text-stroke: 0px;
+  padding: 0.15em 0.1em;
+  overflow: visible;
 }
 
 .wordmark::before {
   content: attr(data-text);
   position: absolute;
   inset: 0;
+  padding: inherit;
   z-index: -2;
   background: linear-gradient(135deg, #FD5A1E 0%, #e8453a 40%, #a0449e 70%, #6B3FA0 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 12px transparent;
+  -webkit-text-stroke: 14px transparent;
   paint-order: stroke fill;
-  filter: blur(0px);
 }
 
 .wordmark::after {
   content: attr(data-text);
   position: absolute;
   inset: 0;
+  padding: inherit;
   z-index: -1;
   color: #0D0D0D;
-  -webkit-text-stroke: 6px #0D0D0D;
+  -webkit-text-stroke: 7px #0D0D0D;
+  paint-order: stroke fill;
+}
+
+/* ─── Navbar mini wordmark (same as hero) ─── */
+.wordmark-sm {
+  position: relative;
+  display: inline-block;
+  color: white;
+  -webkit-text-stroke: 0px;
+  padding: 12px 10px;
+  margin: -12px -10px;
+  isolation: isolate;
+}
+
+.wordmark-sm::before {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  padding: inherit;
+  z-index: -2;
+  background: linear-gradient(135deg, #FD5A1E 0%, #e8453a 40%, #a0449e 70%, #6B3FA0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 8px transparent;
+  paint-order: stroke fill;
+}
+
+.wordmark-sm::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  padding: inherit;
+  z-index: -1;
+  color: #0D0D0D;
+  -webkit-text-stroke: 4px #0D0D0D;
   paint-order: stroke fill;
 }
 
