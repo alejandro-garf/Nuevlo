@@ -3,25 +3,232 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --black: #0D0D0D;
+  --surface: #1A1A1A;
+  --white: #FFFFFF;
+  --orange: #FD5A1E;
+  --purple: #6B3FA0;
+  --border: #2A2A2A;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--white);
+  background: var(--black);
+  font-family: "Nunito", sans-serif;
+  overflow-x: hidden;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+/* ─── Topographic Background ─── */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='800' viewBox='0 0 800 800'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='0.5' opacity='0.04'%3E%3Cellipse cx='400' cy='400' rx='350' ry='300' transform='rotate(-15 400 400)'/%3E%3Cellipse cx='400' cy='400' rx='300' ry='250' transform='rotate(-10 400 400)'/%3E%3Cellipse cx='400' cy='400' rx='250' ry='200' transform='rotate(-5 400 400)'/%3E%3Cellipse cx='400' cy='400' rx='200' ry='160' transform='rotate(0 400 400)'/%3E%3Cellipse cx='400' cy='400' rx='150' ry='120' transform='rotate(5 400 400)'/%3E%3Cellipse cx='400' cy='400' rx='100' ry='80' transform='rotate(10 400 400)'/%3E%3Cellipse cx='400' cy='400' rx='60' ry='45' transform='rotate(15 400 400)'/%3E%3Cellipse cx='200' cy='600' rx='250' ry='200' transform='rotate(20 200 600)'/%3E%3Cellipse cx='200' cy='600' rx='200' ry='160' transform='rotate(15 200 600)'/%3E%3Cellipse cx='200' cy='600' rx='150' ry='120' transform='rotate(10 200 600)'/%3E%3Cellipse cx='200' cy='600' rx='100' ry='80' transform='rotate(5 200 600)'/%3E%3Cellipse cx='650' cy='200' rx='200' ry='170' transform='rotate(-20 650 200)'/%3E%3Cellipse cx='650' cy='200' rx='150' ry='130' transform='rotate(-15 650 200)'/%3E%3Cellipse cx='650' cy='200' rx='100' ry='85' transform='rotate(-10 650 200)'/%3E%3Cellipse cx='650' cy='200' rx='60' ry='45' transform='rotate(-5 650 200)'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 800px 800px;
+}
+
+/* ─── Bubble Graffiti Wordmark ─── */
+.wordmark {
+  position: relative;
+  display: inline-block;
+  color: white;
+  -webkit-text-stroke: 0px;
+}
+
+.wordmark::before {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: linear-gradient(135deg, #FD5A1E 0%, #e8453a 40%, #a0449e 70%, #6B3FA0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 12px transparent;
+  paint-order: stroke fill;
+  filter: blur(0px);
+}
+
+.wordmark::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  color: #0D0D0D;
+  -webkit-text-stroke: 6px #0D0D0D;
+  paint-order: stroke fill;
+}
+
+/* ─── Glass Card ─── */
+.glass {
+  background: rgba(26, 26, 26, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.glass-hover {
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.glass-hover:hover {
+  background: rgba(26, 26, 26, 0.8);
+  border-color: rgba(253, 90, 30, 0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(253, 90, 30, 0.08);
+}
+
+/* ─── Glow Effects ─── */
+.text-glow-orange {
+  text-shadow: 0 0 30px rgba(253, 90, 30, 0.4);
+}
+
+.glow-orange-subtle {
+  box-shadow: 0 0 40px rgba(253, 90, 30, 0.06);
+}
+
+/* ─── Gradient text ─── */
+.gradient-text {
+  background: linear-gradient(135deg, #FD5A1E, #6B3FA0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ─── Pill Button ─── */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.btn-primary:hover::before {
+  opacity: 1;
+}
+.btn-primary:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 30px rgba(253, 90, 30, 0.3);
+}
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+/* ─── Section Fade In (Intersection Observer) ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* stagger children */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.reveal-stagger.visible > *:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0.05s; }
+.reveal-stagger.visible > *:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.12s; }
+.reveal-stagger.visible > *:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.19s; }
+.reveal-stagger.visible > *:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 0.26s; }
+.reveal-stagger.visible > *:nth-child(5) { opacity: 1; transform: translateY(0); transition-delay: 0.33s; }
+.reveal-stagger.visible > *:nth-child(6) { opacity: 1; transform: translateY(0); transition-delay: 0.40s; }
+.reveal-stagger.visible > *:nth-child(7) { opacity: 1; transform: translateY(0); transition-delay: 0.47s; }
+
+/* ─── Hero Entrance ─── */
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(30px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.hero-animate {
+  animation: heroFadeUp 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+.hero-delay-1 {
+  animation: heroFadeUp 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.15s forwards;
+  opacity: 0;
+}
+.hero-delay-2 {
+  animation: heroFadeUp 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards;
+  opacity: 0;
+}
+.hero-delay-3 {
+  animation: heroFadeUp 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.45s forwards;
+  opacity: 0;
+}
+
+/* ─── Loading Pulse ─── */
+@keyframes softPulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+.animate-soft-pulse {
+  animation: softPulse 2s ease-in-out infinite;
+}
+
+/* ─── Response Fade ─── */
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-response {
+  animation: fadeSlideIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* ─── Gradient Divider Line ─── */
+.divider-gradient {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(253,90,30,0.3), rgba(107,63,160,0.3), transparent);
+}
+
+/* ─── Input Focus Ring ─── */
+.input-field {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.input-field:focus {
+  border-color: rgba(253, 90, 30, 0.5);
+  box-shadow: 0 0 0 3px rgba(253, 90, 30, 0.1);
+}
+
+/* ─── Floating Gradient Orbs ─── */
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -30px) scale(1.05); }
+  66% { transform: translate(-20px, 20px) scale(0.95); }
+}
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.15;
+  animation: float 20s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* ─── Step Number Badge ─── */
+.step-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Fredoka One", cursive;
+  font-size: 18px;
+  background: linear-gradient(135deg, #FD5A1E, #6B3FA0);
+  color: white;
+  flex-shrink: 0;
 }

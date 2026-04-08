@@ -9,8 +9,17 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        black: "#0D0D0D",
+        surface: "#1A1A1A",
+        white: "#FFFFFF",
+        orange: "#FD5A1E",
+        purple: "#6B3FA0",
+        border: "#2A2A2A",
+      },
+      fontFamily: {
+        pacifico: ["Pacifico", "cursive"],
+        fredoka: ["Fredoka One", "cursive"],
+        nunito: ["Nunito", "sans-serif"],
       },
     },
   },
